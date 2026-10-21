@@ -1,12 +1,17 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  computed,
+  inject,
+} from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
-import { USER_GROUP_LABELS } from '../../auth/user';
-import { INSTRUMENTS } from '../../instruments';
+import { AuthService, USER_GROUP_LABELS } from '@fp/shared/auth';
+import { PageHeader } from '@fp/shared/ui';
+import { injectAvailableInstruments } from '../../instruments';
 
 @Component({
   selector: 'fp-dashboard',
-  imports: [RouterLink],
+  imports: [RouterLink, PageHeader],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -14,10 +19,14 @@ import { INSTRUMENTS } from '../../instruments';
 export class Dashboard {
   protected readonly user = inject(AuthService).user;
 
-  protected readonly cards = INSTRUMENTS.map((instrument) => ({
-    ...instrument,
-    audience: instrument.groups
-      .map((group) => USER_GROUP_LABELS[group])
-      .join(', '),
-  }));
+  private readonly _instruments = injectAvailableInstruments();
+
+  protected readonly cards = computed(() =>
+    this._instruments().map((instrument) => ({
+      ...instrument,
+      audience: instrument.groups
+        .map((group) => USER_GROUP_LABELS[group])
+        .join(', '),
+    })),
+  );
 }

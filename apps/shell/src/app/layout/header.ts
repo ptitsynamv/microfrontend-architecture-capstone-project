@@ -5,8 +5,7 @@ import {
   inject,
 } from '@angular/core';
 import { Router, RouterLink } from '@angular/router';
-import { AuthService } from '../auth/auth.service';
-import { USER_GROUP_LABELS } from '../auth/user';
+import { AuthService, USER_GROUP_LABELS } from '@fp/shared/auth';
 
 @Component({
   selector: 'fp-header',

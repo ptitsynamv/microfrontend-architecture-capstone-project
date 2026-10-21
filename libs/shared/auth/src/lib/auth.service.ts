@@ -1,11 +1,14 @@
 import { computed, Injectable, signal } from '@angular/core';
-import { User, USER_GROUPS } from './user';
+import { User, USER_GROUPS, UserGroup } from './user';
 
 const STORAGE_KEY = 'fp.user';
 
 /**
  * Fake authentication: there is no backend, the user just picks a name and a
  * group. The user is kept in sessionStorage so a page refresh keeps the session.
+ *
+ * Shared by the shell and every remote through Native Federation, so there is
+ * a single instance and all micro frontends react to the same user signal.
  */
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -13,6 +16,12 @@ export class AuthService {
 
   public readonly user = this._user.asReadonly();
   public readonly isLoggedIn = computed(() => this._user() !== null);
+
+  /** Whether the current user belongs to one of the given groups. */
+  public hasAnyGroup(groups: readonly UserGroup[]): boolean {
+    const user = this._user();
+    return user !== null && groups.includes(user.group);
+  }
 
   public login(user: User): void {
     this._user.set(user);

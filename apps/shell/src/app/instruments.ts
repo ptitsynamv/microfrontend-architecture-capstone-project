@@ -1,4 +1,5 @@
-import { UserGroup } from './auth/user';
+import { computed, inject, Signal } from '@angular/core';
+import { AuthService, UserGroup } from '@fp/shared/auth';
 
 /** An instrument is one tool of the platform, delivered by its own micro frontend. */
 export interface Instrument {
@@ -8,7 +9,7 @@ export interface Instrument {
   remote: string;
   label: string;
   description: string;
-  /** User groups the instrument is meant for. */
+  /** User groups allowed to open the instrument. */
   groups: readonly UserGroup[];
 }
 
@@ -19,7 +20,7 @@ export const INSTRUMENTS: readonly Instrument[] = [
     label: 'Portfolio',
     description:
       'Holdings, performance and allocation of investment portfolios.',
-    groups: ['investor', 'fund-manager'],
+    groups: ['investor', 'fund-manager', 'auditor'],
   },
   {
     path: 'audit',
@@ -29,3 +30,14 @@ export const INSTRUMENTS: readonly Instrument[] = [
     groups: ['auditor'],
   },
 ];
+
+/**
+ * Instruments the current user may open, updated when the user changes.
+ * Must be called in an injection context (e.g. a field initializer).
+ */
+export function injectAvailableInstruments(): Signal<readonly Instrument[]> {
+  const auth = inject(AuthService);
+  return computed(() =>
+    INSTRUMENTS.filter((instrument) => auth.hasAnyGroup(instrument.groups)),
+  );
+}

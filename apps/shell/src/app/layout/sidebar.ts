@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
-import { INSTRUMENTS } from '../instruments';
+import { injectAvailableInstruments } from '../instruments';
 
 @Component({
   selector: 'fp-sidebar',
@@ -10,5 +10,5 @@ import { INSTRUMENTS } from '../instruments';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class Sidebar {
-  protected readonly instruments = INSTRUMENTS;
+  protected readonly instruments = injectAvailableInstruments();
 }

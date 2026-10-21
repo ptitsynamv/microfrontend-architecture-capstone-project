@@ -1,15 +1,17 @@
-<section class="instrument">
-  <p class="badge">Micro frontend: portfolio</p>
-  <h1>Portfolio</h1>
-  <p class="lead">
-    Holdings, performance and allocation of investment portfolios.
-  </p>
+<fp-page-header
+  heading="Portfolio"
+  lead="Holdings, performance and allocation of investment portfolios."
+  badge="Micro frontend: portfolio"
+/>
 
-  <div class="empty">
-    <h2>No holdings yet</h2>
-    <p>
-      This is an empty template. The portfolio team builds its features here and
-      deploys them without touching the shell or other instruments.
-    </p>
-  </div>
-</section>
+<p class="user">
+  @if (user(); as user) { Shared user state: signed in as
+  <strong>{{ user.name }}</strong>
+  ({{ groupLabel() }}). } @else { Not signed in (standalone mode has no login).
+  }
+</p>
+
+<fp-empty-state heading="No holdings yet">
+  This is an empty template. The portfolio team builds its features here and
+  deploys them without touching the shell or other instruments.
+</fp-empty-state>

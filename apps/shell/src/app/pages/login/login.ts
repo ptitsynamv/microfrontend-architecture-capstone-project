@@ -8,8 +8,8 @@ import {
   Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { AuthService } from '../../auth/auth.service';
-import { USER_GROUP_LABELS, USER_GROUPS, UserGroup } from '../../auth/user';
+import { AuthService } from '@fp/shared/auth';
+import { USER_GROUP_LABELS, USER_GROUPS, UserGroup } from '@fp/shared/auth';
 
 function notBlank(control: AbstractControl<string>): ValidationErrors | null {
   return control.value.trim() ? null : { blank: true };

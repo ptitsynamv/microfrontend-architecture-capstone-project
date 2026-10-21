@@ -1,4 +1,5 @@
 .layout {
+  position: relative;
   display: grid;
   grid-template-areas:
     'header header'
@@ -20,4 +21,47 @@
   grid-area: content;
   padding: 2rem;
   overflow: auto;
+}
+
+/* Indeterminate bar at the top while a remote loads. It appears after a short
+   delay so fast loads don't flash, and the previous page stays visible meanwhile. */
+.progress {
+  position: absolute;
+  inset: 0 0 auto;
+  z-index: 1;
+  height: 3px;
+  overflow: hidden;
+  opacity: 0;
+  animation: fp-fade-in 0s 150ms forwards;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background: var(--fp-accent);
+    animation: fp-slide 1s ease-in-out infinite;
+  }
+}
+
+@keyframes fp-fade-in {
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fp-slide {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(250%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress::before {
+    width: 100%;
+    animation: none;
+  }
 }

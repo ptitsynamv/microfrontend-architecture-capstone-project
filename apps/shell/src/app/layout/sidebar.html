@@ -9,7 +9,7 @@
   >
 
   <p class="section">Instruments</p>
-  @for (instrument of instruments; track instrument.path) {
+  @for (instrument of instruments(); track instrument.path) {
   <a
     class="link"
     [routerLink]="['/', instrument.path]"

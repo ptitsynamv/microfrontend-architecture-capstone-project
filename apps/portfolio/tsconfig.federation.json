@@ -1,5 +1,9 @@
 {
   "extends": "./tsconfig.app.json",
-  "files": ["src/app/remote.routes.ts"],
+  "files": [
+    "../../libs/shared/auth/src/index.ts",
+    "../../libs/shared/ui/src/index.ts",
+    "src/app/remote.routes.ts"
+  ],
   "include": ["src/**/*.d.ts"]
 }

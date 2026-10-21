@@ -1,13 +1,17 @@
-<section class="instrument">
-  <p class="badge">Micro frontend: audit</p>
-  <h1>Audit</h1>
-  <p class="lead">Audit trails, reports and compliance checks.</p>
+<fp-page-header
+  heading="Audit"
+  lead="Audit trails, reports and compliance checks."
+  badge="Micro frontend: audit"
+/>
 
-  <div class="empty">
-    <h2>No audits yet</h2>
-    <p>
-      This is an empty template. The audit team builds its features here and
-      deploys them without touching the shell or other instruments.
-    </p>
-  </div>
-</section>
+<p class="user">
+  @if (user(); as user) { Shared user state: signed in as
+  <strong>{{ user.name }}</strong>
+  ({{ groupLabel() }}). } @else { Not signed in (standalone mode has no login).
+  }
+</p>
+
+<fp-empty-state heading="No audits yet">
+  This is an empty template. The audit team builds its features here and deploys
+  them without touching the shell or other instruments.
+</fp-empty-state>
