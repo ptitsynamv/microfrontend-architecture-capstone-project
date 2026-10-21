@@ -5,6 +5,7 @@
   "prefix": "fp",
   "sourceRoot": "apps/portfolio/src",
   "tags": ["type:app", "scope:portfolio"],
+  "implicitDependencies": ["shared-ui"],
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",

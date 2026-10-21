@@ -5,6 +5,7 @@
   "prefix": "fp",
   "sourceRoot": "apps/audit/src",
   "tags": ["type:app", "scope:audit"],
+  "implicitDependencies": ["shared-ui"],
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",
