@@ -8,6 +8,7 @@
   "targets": {
     "build": {
       "executor": "@angular-architects/native-federation:build",
+      "defaultConfiguration": "production",
       "options": {
         "cacheExternalArtifacts": true,
         "tsConfig": "apps/shell/tsconfig.federation.json"
@@ -20,8 +21,7 @@
           "target": "shell:esbuild:development",
           "dev": true
         }
-      },
-      "defaultConfiguration": "production"
+      }
     },
     "serve": {
       "executor": "@angular-architects/native-federation:build",

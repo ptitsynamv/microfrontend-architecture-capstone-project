@@ -1,0 +1,37 @@
+h1 {
+  margin: 0.5rem 0 0;
+}
+
+.badge {
+  display: inline-block;
+  margin: 0;
+  padding: 0.125rem 0.5rem;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  color: var(--fp-accent);
+  background: var(--fp-accent-soft);
+}
+
+.lead {
+  color: var(--fp-text-muted);
+}
+
+.empty {
+  max-width: 40rem;
+  margin-top: 2rem;
+  padding: 2rem;
+  text-align: center;
+  background: var(--fp-surface);
+  border: 1px dashed var(--fp-border);
+  border-radius: 0.75rem;
+
+  h2 {
+    margin: 0 0 0.5rem;
+    font-size: 1.125rem;
+  }
+
+  p {
+    margin: 0;
+    color: var(--fp-text-muted);
+  }
+}

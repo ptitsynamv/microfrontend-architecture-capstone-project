@@ -7,6 +7,48 @@
   "tags": ["type:app", "scope:audit"],
   "targets": {
     "build": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "cacheExternalArtifacts": true,
+        "tsConfig": "apps/audit/tsconfig.federation.json"
+      },
+      "configurations": {
+        "production": {
+          "target": "audit:esbuild:production"
+        },
+        "development": {
+          "target": "audit:esbuild:development",
+          "dev": true
+        }
+      },
+      "defaultConfiguration": "production"
+    },
+    "serve": {
+      "executor": "@angular-architects/native-federation:build",
+      "options": {
+        "target": "audit:serve-original:development",
+        "tsConfig": "apps/audit/tsconfig.federation.json",
+        "rebuildDelay": 500,
+        "cacheExternalArtifacts": true,
+        "dev": true,
+        "devServer": true,
+        "port": 0
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    },
+    "serve-static": {
+      "continuous": true,
+      "executor": "@nx/web:file-server",
+      "options": {
+        "buildTarget": "audit:build",
+        "port": 4202,
+        "staticFilePath": "dist/apps/audit/browser",
+        "spa": true
+      }
+    },
+    "esbuild": {
       "executor": "@angular/build:application",
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
@@ -21,7 +63,8 @@
             "input": "apps/audit/public"
           }
         ],
-        "styles": ["apps/audit/src/styles.scss"]
+        "styles": ["apps/audit/src/styles.scss"],
+        "polyfills": ["es-module-shims"]
       },
       "configurations": {
         "production": {
@@ -46,7 +89,7 @@
         }
       }
     },
-    "serve": {
+    "serve-original": {
       "continuous": true,
       "executor": "@angular/build:dev-server",
       "defaultConfiguration": "development",
@@ -55,24 +98,11 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "audit:build:production"
+          "buildTarget": "audit:esbuild:production"
         },
         "development": {
-          "buildTarget": "audit:build:development"
+          "buildTarget": "audit:esbuild:development"
         }
-      }
-    },
-    "lint": {
-      "executor": "@nx/eslint:lint"
-    },
-    "serve-static": {
-      "continuous": true,
-      "executor": "@nx/web:file-server",
-      "options": {
-        "buildTarget": "audit:build",
-        "port": 4202,
-        "staticFilePath": "dist/apps/audit/browser",
-        "spa": true
       }
     }
   }

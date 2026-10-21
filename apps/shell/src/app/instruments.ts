@@ -4,6 +4,8 @@ import { UserGroup } from './auth/user';
 export interface Instrument {
   /** Route path in the shell, e.g. `/portfolio`. */
   path: string;
+  /** Remote name: the key in `federation.manifest.json`. */
+  remote: string;
   label: string;
   description: string;
   /** User groups the instrument is meant for. */
@@ -13,6 +15,7 @@ export interface Instrument {
 export const INSTRUMENTS: readonly Instrument[] = [
   {
     path: 'portfolio',
+    remote: 'portfolio',
     label: 'Portfolio',
     description:
       'Holdings, performance and allocation of investment portfolios.',
@@ -20,6 +23,7 @@ export const INSTRUMENTS: readonly Instrument[] = [
   },
   {
     path: 'audit',
+    remote: 'audit',
     label: 'Audit',
     description: 'Audit trails, reports and compliance checks.',
     groups: ['auditor'],
