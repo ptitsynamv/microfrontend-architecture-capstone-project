@@ -1,0 +1,32 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  height: 100%;
+  padding: 1rem 0.75rem;
+  background: var(--fp-sidebar);
+}
+
+.section {
+  margin: 1rem 0.75rem 0.25rem;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--fp-sidebar-muted);
+}
+
+.link {
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  color: var(--fp-sidebar-text);
+  text-decoration: none;
+
+  &:hover {
+    background: var(--fp-sidebar-hover);
+  }
+
+  &.active {
+    color: #fff;
+    background: var(--fp-accent);
+  }
+}

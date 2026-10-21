@@ -1,0 +1,43 @@
+.login {
+  display: grid;
+  place-items: center;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+  max-width: 22rem;
+  padding: 2rem;
+  background: var(--fp-surface);
+  border: 1px solid var(--fp-border);
+  border-radius: 0.75rem;
+}
+
+h1 {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.hint {
+  margin: 0 0 1rem;
+  color: var(--fp-text-muted);
+}
+
+label {
+  margin-top: 0.5rem;
+  font-weight: 500;
+}
+
+.error {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--fp-danger);
+}
+
+button {
+  margin-top: 1rem;
+}

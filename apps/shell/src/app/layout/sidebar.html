@@ -1,0 +1,21 @@
+<nav class="sidebar" aria-label="Instruments">
+  <a
+    class="link"
+    routerLink="/"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: true }"
+    ariaCurrentWhenActive="page"
+    >Dashboard</a
+  >
+
+  <p class="section">Instruments</p>
+  @for (instrument of instruments; track instrument.path) {
+  <a
+    class="link"
+    [routerLink]="['/', instrument.path]"
+    routerLinkActive="active"
+    ariaCurrentWhenActive="page"
+    >{{ instrument.label }}</a
+  >
+  }
+</nav>

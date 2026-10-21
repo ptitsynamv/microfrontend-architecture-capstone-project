@@ -1,0 +1,18 @@
+<h1>Welcome, {{ user()?.name }}</h1>
+<p class="intro">
+  Every instrument below is a separate micro frontend, built and deployed by its
+  own team. The shell around it (header and sidebar) stays in place while you
+  switch between them.
+</p>
+
+<ul class="cards">
+  @for (card of cards; track card.path) {
+  <li>
+    <a class="card" [routerLink]="['/', card.path]">
+      <h2>{{ card.label }}</h2>
+      <p>{{ card.description }}</p>
+      <p class="audience">For: {{ card.audience }}</p>
+    </a>
+  </li>
+  }
+</ul>

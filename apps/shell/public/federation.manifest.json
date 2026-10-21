@@ -1,0 +1,4 @@
+{
+  "audit": "http://localhost:4202/remoteEntry.json",
+  "portfolio": "http://localhost:4201/remoteEntry.json"
+}

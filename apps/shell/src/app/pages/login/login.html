@@ -1,0 +1,30 @@
+<main class="login">
+  <form class="card" [formGroup]="form" (ngSubmit)="submit()" novalidate>
+    <h1>Financial Platform</h1>
+    <p class="hint">
+      Demo login: pick any name and a user group. There is no password.
+    </p>
+
+    <label for="name">Name</label>
+    <input
+      id="name"
+      type="text"
+      formControlName="name"
+      autocomplete="name"
+      [attr.aria-invalid]="form.controls.name.invalid && form.controls.name.touched"
+      aria-describedby="name-error"
+    />
+    @if (form.controls.name.invalid && form.controls.name.touched) {
+    <p id="name-error" class="error">Enter a name (up to 50 characters).</p>
+    }
+
+    <label for="group">User group</label>
+    <select id="group" formControlName="group">
+      @for (option of groupOptions; track option.value) {
+      <option [value]="option.value">{{ option.label }}</option>
+      }
+    </select>
+
+    <button type="submit">Sign in</button>
+  </form>
+</main>
