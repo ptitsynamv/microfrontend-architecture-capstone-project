@@ -5,11 +5,9 @@ import {
   inject,
 } from '@angular/core';
 import { AuthService, USER_GROUP_LABELS } from '@fp/shared/auth';
-import { EmptyState, PageHeader } from '@fp/shared/ui';
 
 @Component({
   selector: 'fp-audit-home',
-  imports: [PageHeader, EmptyState],
   templateUrl: './home.html',
   styleUrl: './home.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

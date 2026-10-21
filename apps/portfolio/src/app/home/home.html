@@ -1,8 +1,8 @@
-<fp-page-header
-  heading="Portfolio"
-  lead="Holdings, performance and allocation of investment portfolios."
-  badge="Micro frontend: portfolio"
-/>
+<p class="badge">Micro frontend: portfolio</p>
+<h1>Portfolio</h1>
+<p class="lead">
+  Holdings, performance and allocation of investment portfolios.
+</p>
 
 <p class="user">
   @if (user(); as user) { Shared user state: signed in as
@@ -11,7 +11,10 @@
   }
 </p>
 
-<fp-empty-state heading="No holdings yet">
-  This is an empty template. The portfolio team builds its features here and
-  deploys them without touching the shell or other instruments.
-</fp-empty-state>
+<div class="empty">
+  <h2>No holdings yet</h2>
+  <p>
+    This is an empty template. The portfolio team builds its features here and
+    deploys them without touching the shell or other instruments.
+  </p>
+</div>

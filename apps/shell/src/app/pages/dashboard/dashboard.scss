@@ -1,5 +1,11 @@
-fp-page-header {
+h1 {
+  margin-top: 0;
+}
+
+.intro {
   max-width: 40rem;
+  margin-bottom: 2rem;
+  color: var(--fp-text-muted);
 }
 
 .cards {

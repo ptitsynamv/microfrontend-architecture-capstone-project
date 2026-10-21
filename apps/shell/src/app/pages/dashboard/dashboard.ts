@@ -6,12 +6,11 @@ import {
 } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { AuthService, USER_GROUP_LABELS } from '@fp/shared/auth';
-import { PageHeader } from '@fp/shared/ui';
 import { injectAvailableInstruments } from '../../instruments';
 
 @Component({
   selector: 'fp-dashboard',
-  imports: [RouterLink, PageHeader],
+  imports: [RouterLink],
   templateUrl: './dashboard.html',
   styleUrl: './dashboard.scss',
   changeDetection: ChangeDetectionStrategy.OnPush,

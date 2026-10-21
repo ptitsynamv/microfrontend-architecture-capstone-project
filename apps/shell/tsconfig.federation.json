@@ -1,8 +1,9 @@
 {
   "extends": "./tsconfig.app.json",
   "files": [
-    "../../libs/shared/auth/src/index.ts",
-    "../../libs/shared/ui/src/index.ts"
+    "../../libs/shared/auth/src/index.ts"
   ],
-  "include": ["src/**/*.d.ts"]
+  "include": [
+    "src/**/*.d.ts"
+  ]
 }

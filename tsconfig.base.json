@@ -14,8 +14,7 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "paths": {
-      "@fp/shared/auth": ["./libs/shared/auth/src/index.ts"],
-      "@fp/shared/ui": ["./libs/shared/ui/src/index.ts"]
+      "@fp/shared/auth": ["./libs/shared/auth/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]
